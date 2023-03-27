@@ -1,10 +1,11 @@
-#include <pic14/pic12f675.h>
+#include <pic14/pic12f683.h>
 #include <stdint.h> 
 // Se desabilita el MCLR (se pone el MCLRE en OFF) y el WDT (se pone el WDTE en OFF)
 unsigned int __at 0x2007 __CONFIG = (_MCLRE_OFF&_WDTE_OFF);
 
 // Declaracion de funciones 
 void delay (unsigned int tiempo);
+void displayNum (int num, int display);
 uint8_t randomInRange(uint8_t min, uint8_t max);
  
 void main(void)
@@ -12,7 +13,7 @@ void main(void)
 
 	
 	TRISIO = 0b00001000; //Poner todos los pines como salidas
-	    GPIO = 0x00; //Poner pines en bajo
+	GPIO = 0x00; //Poner pines en bajo
  	
     unsigned int time = 100;
  	uint8_t num1, num2;
@@ -46,6 +47,36 @@ uint8_t randomInRange(uint8_t min, uint8_t max) {
     uint8_t randomNum = (uint8_t) ((seed % (max - min + 1)) + min);
     return randomNum;
 } 
+
+void displayNum(int num, int display)
+{
+	if (display == 0)
+	{
+		if (num == 0) GPIO = 0b00000000;
+		else if (num == 1)GPIO = 0b00000001;
+		else if (num == 2)GPIO = 0b00000010;
+		else if (num == 3)GPIO = 0b00000011;
+		else if (num == 4)GPIO = 0b00000100;
+		else if (num == 5)GPIO = 0b00000101;
+		else if (num == 6)GPIO = 0b00000110;
+		else if (num == 7)GPIO = 0b00000111;
+		else if (num == 8)GPIO = 0b00010000;
+		else GPIO = 0b00010001;
+	}
+	else 
+	{
+		if (num == 0) GPIO = 0b00000000;
+		else if (num == 1)GPIO = 0b00000001;
+		else if (num == 2)GPIO = 0b00000010;
+		else if (num == 3)GPIO = 0b00000011;
+		else if (num == 4)GPIO = 0b00000100;
+		else if (num == 5)GPIO = 0b00000101;
+		else if (num == 6)GPIO = 0b00000110;
+		else if (num == 7)GPIO = 0b00000111;
+		else if (num == 8)GPIO = 0b00010000;
+		else GPIO = 0b00010001;
+	}
+}
 
 void delay(unsigned int tiempo)
 {
