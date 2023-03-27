@@ -1,5 +1,6 @@
 #include <pic14/pic12f675.h>
  
+ 
 //To compile:
 //sdcc -mpic14 -p16f675 blink.c
  
@@ -21,7 +22,7 @@
 //To program the chip using pk2cmd:
 //pk2cmd -M -PPIC16f887 -Fblink.hex
  
-void delay (unsigned inttiempo);
+void delay (unsigned int tiempo);
  
 void main(void)
 {
