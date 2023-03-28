@@ -52,7 +52,7 @@ void displayNum(uint8_t num, int display)
 {
   // Asignar valores a los pines de salida correspondientes
   if (display == 0) {
-    switch (numero) {
+    switch (num) {
       case 0:
         GPIO = 0b00000001;
         break;
@@ -86,7 +86,7 @@ void displayNum(uint8_t num, int display)
     }
   }
   else if (display == 1) {
-    switch (numero) {
+    switch (num) {
       case 0:
         GPIO = 0b00000010;
         break;
