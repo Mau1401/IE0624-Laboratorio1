@@ -1,5 +1,6 @@
 #include <pic14/pic12f683.h>
 #include <stdint.h> 
+
 // Se desabilita el MCLR (se pone el MCLRE en OFF) y el WDT (se pone el WDTE en OFF)
 unsigned int __at 0x2007 __CONFIG = (_MCLRE_OFF&_WDTE_OFF);
 
@@ -15,21 +16,53 @@ void main(void)
 	TRISIO = 0b00001000; //Poner todos los pines como salidas
 	GPIO = 0x00; //Poner pines en bajo
  	
-    unsigned int time = 100;
  	uint8_t num1, num2;
+  unsigned int count = 0;
  	
-    	//Loop forever
+  //Loop forever
 	while ( 1 )
-    	{
+  {
     		
-    			num1 = randomInRange(0,9);
-    			num2 = randomInRange(0,9); 
-			GP0 = 0x00;
-			delay(time);
+    num1 = randomInRange(0,9);
+    num2 = randomInRange(0,9);
 
-			GP0 = ~GP0;
-			delay(time);
-    	}
+    //displayNum(num1,0);
+    //delay(5);
+    //displayNum(num2,1);
+    //delay(5); 
+
+    if (GP3)
+    {
+      count=count+1;
+      while (GP3)
+      {
+        displayNum(num1,0);
+        delay(5);
+        displayNum(num2,1);
+        delay(5);
+      }
+      if (count == 16)
+      {
+        // Si la cuenta llega a 16 entonces se alternan con el número
+				// 9 en los displays
+				displayNum(9,0);
+				delay(200);
+				displayNum(9,1);
+				delay(200);
+				displayNum(9,0);
+				delay(200);
+				displayNum(9,1);
+				delay(200);
+				displayNum(9,0);
+				delay(200);
+				displayNum(9,1);
+				delay(200);
+				count = 0; // Se vuelve a poner la cuenta en 0 
+			}
+
+    } 
+
+  }
  
 }
 
@@ -54,68 +87,68 @@ void displayNum(uint8_t num, int display)
   if (display == 0) {
     switch (num) {
       case 0:
-        GPIO = 0b00000001;
-        break;
-      case 1:
-        GPIO = 0b10011111;
-        break;
-      case 2:
-        GPIO = 0b00100100;
-        break;
-      case 3:
-        GPIO = 0b00001100;
-        break;
-      case 4:
-        GPIO = 0b10011001;
-        break;
-      case 5:
-        GPIO = 0b01001000;
-        break;
-      case 6:
-        GPIO = 0b01000000;
-        break;
-      case 7:
-        GPIO = 0b00011111;
-        break;
-      case 8:
         GPIO = 0b00000000;
         break;
+      case 1:
+        GPIO = 0b00000001;
+        break;
+      case 2:
+        GPIO = 0b00000010;
+        break;
+      case 3:
+        GPIO = 0b00000011;
+        break;
+      case 4:
+        GPIO = 0b00000100;
+        break;
+      case 5:
+        GPIO = 0b00000101;
+        break;
+      case 6:
+        GPIO = 0b00000110;
+        break;
+      case 7:
+        GPIO = 0b00000111;
+        break;
+      case 8:
+        GPIO = 0b00010000;
+        break;
       case 9:
-        GPIO = 0b00001000;
+        GPIO = 0b00010001;
         break;
     }
   }
   else if (display == 1) {
     switch (num) {
       case 0:
-        GPIO = 0b00000010;
+        GPIO = 0b00100000;
         break;
       case 1:
-        GPIO = 0b11101111;
+        GPIO = 0b00100001;
         break;
       case 2:
-        GPIO = 0b01100100;
+        GPIO = 0b00100010;
         break;
       case 3:
-        GPIO = 0b00110100;
+        GPIO = 0b00100011;
         break;
       case 4:
-        GPIO = 0b10011000;
+        GPIO = 0b00100100;
         break;
       case 5:
-        GPIO = 0b00110010;
+        GPIO = 0b00100101;
         break;
       case 6:
-        GPIO = 0b00010010;
+        GPIO = 0b00100110;
         break;
       case 7:
-        GPIO = 0b01101111;
+        GPIO = 0b00100111;
         break;
       case 8:
-        GPIO = 0b00000000;
+        GPIO = 0b00110000;
         break;
       case 9:
-        GPIO = 0b00010000;
+        GPIO = 0b00110001;
         break;
     }
   }
