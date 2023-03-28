@@ -5,7 +5,7 @@ unsigned int __at 0x2007 __CONFIG = (_MCLRE_OFF&_WDTE_OFF);
 
 // Declaracion de funciones 
 void delay (unsigned int tiempo);
-void displayNum (int num, int display);
+void displayNum (uint8_t num, int display);
 uint8_t randomInRange(uint8_t min, uint8_t max);
  
 void main(void)
@@ -48,34 +48,77 @@ uint8_t randomInRange(uint8_t min, uint8_t max) {
     return randomNum;
 } 
 
-void displayNum(int num, int display)
+void displayNum(uint8_t num, int display)
 {
-	if (display == 0)
-	{
-		if (num == 0) GPIO = 0b00000000;
-		else if (num == 1)GPIO = 0b00000001;
-		else if (num == 2)GPIO = 0b00000010;
-		else if (num == 3)GPIO = 0b00000011;
-		else if (num == 4)GPIO = 0b00000100;
-		else if (num == 5)GPIO = 0b00000101;
-		else if (num == 6)GPIO = 0b00000110;
-		else if (num == 7)GPIO = 0b00000111;
-		else if (num == 8)GPIO = 0b00010000;
-		else GPIO = 0b00010001;
-	}
-	else 
-	{
-		if (num == 0) GPIO = 0b00000000;
-		else if (num == 1)GPIO = 0b00000001;
-		else if (num == 2)GPIO = 0b00000010;
-		else if (num == 3)GPIO = 0b00000011;
-		else if (num == 4)GPIO = 0b00000100;
-		else if (num == 5)GPIO = 0b00000101;
-		else if (num == 6)GPIO = 0b00000110;
-		else if (num == 7)GPIO = 0b00000111;
-		else if (num == 8)GPIO = 0b00010000;
-		else GPIO = 0b00010001;
-	}
+  // Asignar valores a los pines de salida correspondientes
+  if (display == 0) {
+    switch (numero) {
+      case 0:
+        GPIO = 0b00000001;
+        break;
+      case 1:
+        GPIO = 0b10011111;
+        break;
+      case 2:
+        GPIO = 0b00100100;
+        break;
+      case 3:
+        GPIO = 0b00001100;
+        break;
+      case 4:
+        GPIO = 0b10011001;
+        break;
+      case 5:
+        GPIO = 0b01001000;
+        break;
+      case 6:
+        GPIO = 0b01000000;
+        break;
+      case 7:
+        GPIO = 0b00011111;
+        break;
+      case 8:
+        GPIO = 0b00000000;
+        break;
+      case 9:
+        GPIO = 0b00001000;
+        break;
+    }
+  }
+  else if (display == 1) {
+    switch (numero) {
+      case 0:
+        GPIO = 0b00000010;
+        break;
+      case 1:
+        GPIO = 0b11101111;
+        break;
+      case 2:
+        GPIO = 0b01100100;
+        break;
+      case 3:
+        GPIO = 0b00110100;
+        break;
+      case 4:
+        GPIO = 0b10011000;
+        break;
+      case 5:
+        GPIO = 0b00110010;
+        break;
+      case 6:
+        GPIO = 0b00010010;
+        break;
+      case 7:
+        GPIO = 0b01101111;
+        break;
+      case 8:
+        GPIO = 0b00000000;
+        break;
+      case 9:
+        GPIO = 0b00010000;
+        break;
+    }
+  }
 }
 
 void delay(unsigned int tiempo)
