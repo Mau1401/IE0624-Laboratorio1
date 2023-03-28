@@ -405,7 +405,7 @@ _00183_DS_:
 _00204_DS_:
 	BTFSC	STATUS,0
 	GOTO	_00185_DS_
-;;genSkipc:3307: created from rifx:0x7ffff46831a0
+;;genSkipc:3307: created from rifx:0x7ffdece2cc80
 ;	.line	163; "bingo.c"	for(j=0;j<1275;j++);
 	MOVLW	0xfb
 	BANKSEL	r0x1008
@@ -473,7 +473,7 @@ _displayNum:
 	SUBWF	r0x100C,W
 	BTFSC	STATUS,0
 	GOTO	_00151_DS_
-;;genSkipc:3307: created from rifx:0x7ffff46831a0
+;;genSkipc:3307: created from rifx:0x7ffdece2cc80
 	MOVLW	HIGH(_00170_DS_)
 	BANKSEL	PCLATH
 	MOVWF	PCLATH
@@ -584,7 +584,7 @@ _00149_DS_:
 	SUBWF	r0x100C,W
 	BTFSC	STATUS,0
 	GOTO	_00151_DS_
-;;genSkipc:3307: created from rifx:0x7ffff46831a0
+;;genSkipc:3307: created from rifx:0x7ffdece2cc80
 	MOVLW	HIGH(_00172_DS_)
 	BANKSEL	PCLATH
 	MOVWF	PCLATH
