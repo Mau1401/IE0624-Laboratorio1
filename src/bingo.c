@@ -22,46 +22,57 @@ void main(void)
   //Loop forever
 	while ( 1 )
   {
-    		
+    // Se generan numeros aleatorios y se muestran en el display mienttras el boton no sea presionado
     num1 = randomInRange(0,9);
     num2 = randomInRange(0,9);
-
-    //displayNum(num1,0);
-    //delay(5);
-    //displayNum(num2,1);
-    //delay(5); 
-
+    displayNum(num1,0);
+    delay(5);
+    displayNum(num2,1);
+    delay(5);
+    
+    //Ahora cuando se presiona el boton se muestra el numero selecionado en el display
     if (GP3)
-    {
-      count=count+1;
+    { 
+      count=count+1; //Se aumenta el contador
       while (GP3)
       {
         displayNum(num1,0);
         delay(5);
         displayNum(num2,1);
         delay(5);
+        
       }
-      if (count == 16)
+    }
+    if (count == 16)
       {
         // Si la cuenta llega a 16 entonces se alternan con el número
 				// 9 en los displays
 				displayNum(9,0);
-				delay(200);
+				delay(15);
 				displayNum(9,1);
-				delay(200);
+				delay(15);
 				displayNum(9,0);
-				delay(200);
+				delay(15);
 				displayNum(9,1);
-				delay(200);
+				delay(15);
 				displayNum(9,0);
-				delay(200);
+				delay(15);
 				displayNum(9,1);
-				delay(200);
+				delay(15);
+        displayNum(9,0);
+				delay(15);
+				displayNum(9,1);
+				delay(15);
+        displayNum(9,0);
+				delay(15);
+				displayNum(9,1);
+				delay(15);
+        displayNum(9,0);
+				delay(15);
+				displayNum(9,1);
+				delay(15);
 				count = 0; // Se vuelve a poner la cuenta en 0 
-			}
-
-    } 
-
+			} 
   }
  
 }
