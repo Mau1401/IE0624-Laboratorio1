@@ -48,29 +48,33 @@ void main(void)
         // Si la cuenta llega a 16 entonces se alternan con el número
 				// 9 en los displays
 				displayNum(9,0);
-				delay(15);
+				delay(10);
 				displayNum(9,1);
-				delay(15);
+				delay(10);
 				displayNum(9,0);
-				delay(15);
+				delay(10);
 				displayNum(9,1);
-				delay(15);
-				displayNum(9,0);
-				delay(15);
-				displayNum(9,1);
-				delay(15);
+				delay(10);
         displayNum(9,0);
-				delay(15);
+				delay(10);
 				displayNum(9,1);
-				delay(15);
+				delay(10);
         displayNum(9,0);
-				delay(15);
+				delay(10);
 				displayNum(9,1);
-				delay(15);
+				delay(10);
         displayNum(9,0);
-				delay(15);
+				delay(10);
 				displayNum(9,1);
-				delay(15);
+				delay(10);
+        displayNum(9,0);
+				delay(10);
+				displayNum(9,1);
+				delay(10);
+        displayNum(9,0);
+				delay(10);
+				displayNum(9,1);
+				delay(10);
 				count = 0; // Se vuelve a poner la cuenta en 0 
 			} 
   }
