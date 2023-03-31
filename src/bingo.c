@@ -6,8 +6,8 @@ unsigned int __at 0x2007 __CONFIG = (_MCLRE_OFF&_WDTE_OFF);
 
 // Declaracion de funciones 
 void delay (unsigned int tiempo);
-void displayNum (uint8_t num, int display);
-uint8_t randomInRange(uint8_t min, uint8_t max);
+void displayNum (unsigned int num, int display);
+unsigned int randomInRange(unsigned int min, unsigned int max);
  
 void main(void)
 {
@@ -16,7 +16,7 @@ void main(void)
 	TRISIO = 0b00001000; //Poner todos los pines como salidas
 	GPIO = 0x00; //Poner pines en bajo
  	
- 	uint8_t num1, num2;
+ 	unsigned int num1, num2;
   unsigned int count = 0;
  	
   //Loop forever
@@ -82,7 +82,7 @@ void main(void)
 }
 
 // Genera un número aleatorio entre min y max, ambos inclusive
-uint8_t randomInRange(uint8_t min, uint8_t max) {
+unsigned int randomInRange(unsigned int min, unsigned int max) {
     static uint32_t seed = 0;
     if (seed == 0) {
         // Semilla inicial basada en la dirección del registro de estado del programa
@@ -92,11 +92,11 @@ uint8_t randomInRange(uint8_t min, uint8_t max) {
     seed ^= (seed << 13);
     seed ^= (seed >> 17);
     seed ^= (seed << 5);
-    uint8_t randomNum = (uint8_t) ((seed % (max - min + 1)) + min);
+    unsigned int randomNum = (unsigned int) ((seed % (max - min + 1)) + min);
     return randomNum;
 } 
 
-void displayNum(uint8_t num, int display)
+void displayNum(unsigned int num, int display)
 {
   // Asignar valores a los pines de salida correspondientes
   if (display == 0) {
